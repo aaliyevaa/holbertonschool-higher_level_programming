@@ -4,5 +4,3 @@ def uppercase(st):
     for i in st:
         n+=chr(ord(i)-32)
     return n
-
-print(uppercase('hi'))
