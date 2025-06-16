@@ -6,7 +6,7 @@ if __name__ == "__main__":
     if count != 3:
         print('Usage: ./100-my_calculator.py <a> <operator> <b>')
         exit(1)
-    operators = [ '+', '-', '*', '/']
+    operators = ['+', '-', '*', '/']
     num1 = int(sys.argv[1])
     op = sys.argv[2]
     num2 = int(sys.argv[3])
