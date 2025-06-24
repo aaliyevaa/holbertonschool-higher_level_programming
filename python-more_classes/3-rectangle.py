@@ -3,7 +3,7 @@
 
 
 class Rectangle:
-    """ This class defines a rectangle by its width and height and return perimeter and area along with a printed version of the rectangle."""
+    """ This class defines a rectangle by its width and height"""
     def __init__(self, width=0, height=0):
         """ Initialize with width and height."""
         self.height = height
@@ -44,7 +44,7 @@ class Rectangle:
         return self.__width * self.__height
 
     def perimeter(self):
-        """Return the perimeter of the given rectangle, 0 if width or height is 0"""
+        """Return the perimeter of the given rectangle"""
         if self.__height == 0 or self.__width == 0:
             return 0
         return (self.__height + self.__width) * 2
