@@ -1,3 +1,10 @@
 #!/usr/bin/python3
+
+""" This module has an empty class Rectangle"""
+
+
 class Rectangle:
-   pass
+
+    """ This class is empty"""
+
+    pass
