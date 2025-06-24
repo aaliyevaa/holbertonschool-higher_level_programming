@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 """ This module has a class Rectangle."""
 
 
@@ -6,18 +6,18 @@ class Rectangle:
     """ This class defines a rectangle by its width and height."""
     def __init__(self, width=0, height=0):
         """ Initiation with width and height"""
-        self.width = width
-        self.height = height
+        self.__width = width
+        self.__height = height
 
     @property
     def height(self):
         """ Get the value of height"""
-        return height
+        return self.__height
 
     @property
     def width(self):
         """ Get the value of width"""
-        return width
+        return self.__width
 
     @height.setter
     def height(self, value):
@@ -27,7 +27,7 @@ class Rectangle:
         elif value < 0:
             raise ValueError("height must be >= 0")
         else:
-            self.height = value
+            self.__height = value
 
     @width.setter
     def width(self, value):
@@ -37,4 +37,4 @@ class Rectangle:
         elif value < 0:
             raise ValueError("width must be >= 0")
         else:
-            self.width = value            
+            self.__width = value            
