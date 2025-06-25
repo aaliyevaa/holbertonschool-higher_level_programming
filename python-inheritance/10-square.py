@@ -2,6 +2,7 @@
 """This is a module."""
 Rectangle = __import__('9-rectangle').Rectangle
 
+
 class Square(Rectangle):
     """This class inherits from Rectangle."""
     def __init__(self, size):
