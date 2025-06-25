@@ -3,7 +3,7 @@
 >>> bg_module = importlib.util.module_from_spec(spec)
 >>> spec.loader.exec_module(bg_module)
 >>> bg = bg_module.BaseGeometry()
->>> bg.integer_validator('dummmy', 1)
+>>> bg.integer_validator('age', 1)
 >>> bg.area()
 Traceback (most recent call last):
     ...
