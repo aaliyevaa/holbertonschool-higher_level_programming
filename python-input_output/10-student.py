@@ -15,4 +15,4 @@ class Student:
         """Retrieves a dictionary"""
         if not attrs:
             return self.__dict__
-        return {key: getattr(self, key) for key in attrs is hasattr(self, key)}
+        return {key: getattr(self, key) for key in attrs if hasattr(self, key)}
