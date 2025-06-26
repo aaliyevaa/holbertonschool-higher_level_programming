@@ -24,5 +24,5 @@ class Student:
 
     def reload_from_json(self, json):
         """Replaces"""
-        for key, value in json.getitems():
+        for key, value in json.items():
             setattr(self, key, value)
