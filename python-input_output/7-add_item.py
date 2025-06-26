@@ -1,10 +1,8 @@
 #!/usr/bin/python3
 """This module uses 2 imported functions."""
-
-"""Import sys and json libraries to use their built-in functions."""
+import os
 import sys
 import json
-import os
 
 """Import 2 previous functions from previous files."""
 save_to_json_file = __import__("5-save_to_json_file").save_to_json_file
