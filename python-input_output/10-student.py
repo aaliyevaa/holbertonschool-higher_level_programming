@@ -14,5 +14,5 @@ class Student:
     def to_json(self, attrs=None):
         """Retrieves a dictionary"""
         if not attrs:
-            return self.__dict__
+            return dict(self.__dict__)
         return {key: getattr(self, key) for key in attrs if hasattr(self, key)}
