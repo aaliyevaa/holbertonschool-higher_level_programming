@@ -27,7 +27,7 @@ class CustomObject:
         try:
             with open(filename, 'wb', encoding='utf-8') as f:
                 pickle.dump(self, f)
-        except Exceptione:
+        except Exception:
             return None
 
     @classmethod
@@ -36,7 +36,7 @@ class CustomObject:
         try:
             with open(filename, 'rb', encoding='utf-8') as f:
                 obj = pickle.load(f)
-                if isinstnace(obj, cls):
+                if isinstance(obj, cls):
                     return obj
                 else:
                     return None
