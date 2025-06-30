@@ -15,9 +15,7 @@ def convert_csv_to_json(csv_filename):
             for i in data:
                 data_list.append(i)
         with open('data.json', mode='w', encoding='utf-8') as jfile:
-            json.dump(data_list, jfile, indent=4)
-
-        return:
-            True
+            json.dump(data_list, fp=jfile)
+        return True
     except Exception:
         return False
