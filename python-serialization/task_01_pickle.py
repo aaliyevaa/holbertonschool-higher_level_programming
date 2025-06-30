@@ -27,8 +27,8 @@ class CustomObject:
         try:
             with open(filename, 'wb', encoding='utf-8') as f:
                 pickle.dump(self, f)
-        except Exception as e:
-            pass
+        except Exceptione:
+            return None
 
     @classmethod
     def deserialize(cls, filename):
