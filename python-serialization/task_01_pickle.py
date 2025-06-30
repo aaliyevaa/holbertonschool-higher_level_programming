@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """This module serializes and deserializes a custom objects using
 pickle module"""
 import pickle
@@ -25,7 +25,7 @@ class CustomObject:
         and saves it in a file called <filename> using
         pickle module"""
         try:
-            with open(filename, 'wb', encoding='utf-8') as f:
+            with open(filename, mode='wb') as f:
                 pickle.dump(self, f)
         except IOError:
             return None
@@ -34,8 +34,8 @@ class CustomObject:
     def deserialize(cls, filename):
         """Deserialize <filename>."""
         try:
-            with open(filename, 'rb', encoding='utf-8') as f:
+            with open(filename, mode='rb') as f:
                 obj = pickle.load(f)
-                return obj
+            return obj
         except Exception:
             return None
