@@ -2,5 +2,6 @@
 SELECT `city`, AVG(`value`) AS `temperature`
 FROM `temperatures`
 WHERE `month` IN (7, 8)
+GROUP BY `city`
 ORDER BY `temperature` DESC
 LIMIT 3;
