@@ -1,0 +1,2 @@
+-- This script will create a new database
+CREATE DATABASE hbtn_0c_0;
