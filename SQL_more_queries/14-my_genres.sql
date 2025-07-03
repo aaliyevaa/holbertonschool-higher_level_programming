@@ -1,5 +1,5 @@
 -- Dexter
-SELECT name
+SELECT tv_genres.name
 FROM tv_genres
 WHERE id IN (
 	SELECT genre_id
