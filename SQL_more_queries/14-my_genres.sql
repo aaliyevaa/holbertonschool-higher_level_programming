@@ -1,9 +1,10 @@
 -- Dexter
-SELECT tv_genres.name
+SELECT name
 FROM tv_genres
-WHERE name = (
-	SELECT tv_shows.title
-	FROM tv_shows
-	WHERE title = 'Dexter'
+WHERE id IN (
+	SELECT genre_id
+	FROM tv_show_genres
+	WHERE show_id = (
+		SELECT id FROM tv_shows WHERE title = 'Dexter')
 )
-ORDER BY tv_genres.name;
+ORDER BY name;
