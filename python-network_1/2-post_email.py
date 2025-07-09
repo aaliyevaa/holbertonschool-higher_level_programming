@@ -3,7 +3,7 @@
 from urllib import request, parse
 import sys
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     """Ensure the code is executed when directly run"""
     url = sys.argv[1]
     email = sys.argv[2]
