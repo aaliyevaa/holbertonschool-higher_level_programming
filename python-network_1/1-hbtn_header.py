@@ -6,7 +6,7 @@ import sys
 
 if __name__ == "__main__":
     """Ensure code runs when directly run"""
-    url = sys.arg[1]
+    url = sys.argv[1]
     req = request.Request(url)
     req.add_header("cfclearance", "true")
 
