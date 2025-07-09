@@ -4,11 +4,11 @@ from urllib import request
 
 if __name__ == "__main__":
     """Makes code executable when it is directly run"""
-    url ="https://intranet.hbtn.io/status"
+    url = "https://intranet.hbtn.io/status"
     req = request.Request(url)
     req.add_header('cfclearance', 'true')
 
-    with request.urlopen(url) as response:
+    with request.urlopen(req) as response:
         """Opens the url and reads the contents"""
         body = response.read()
         utf8_content = body.decode('utf-8')
