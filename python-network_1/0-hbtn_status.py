@@ -2,7 +2,7 @@
 """Fetches a URL"""
 from urllib import request
 
-if ___name__ == "__main__":
+if __name__ == "__main__":
     """Makes code executable when it is directly run"""
     url = "https://intranet.hbtn.io/status"
     req = request.Request(url)
