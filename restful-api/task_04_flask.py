@@ -11,14 +11,14 @@ if __name__ == "__main__":
     app.run(debug=True)
 
 @app.route('/data')
-def get_usernames()
+def get_usernames():
     return jsonify(list(users.keys()))
 
 @app.route('/status')
 def status():
     return "OK"
 
-@app.route("/users/<username>"):
+@app.route("/users/<username>")
     def get_user(username):
         user = users.get(username)
         if user:
