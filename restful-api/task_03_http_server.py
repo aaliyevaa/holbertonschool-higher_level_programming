@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import http.server
+from http.server import BaseHTTPRequestHandler, HTTPServer
 import socketserver
 import json
 
