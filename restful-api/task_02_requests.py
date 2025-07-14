@@ -10,7 +10,7 @@ def fetch_and_print_posts():
     response = requests.get(url)
     print(f"Status code: {response.status_code}")
     if response.status_code == 200:
-        data = respone.json()
+        data = response.json()
         for post in data:
             print(post['title'])
     else:
