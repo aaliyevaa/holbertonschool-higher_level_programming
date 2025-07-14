@@ -43,6 +43,8 @@ def run():
     server_address = ('', port)
     httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
     print(f"Server is running on port {port}...")
+    httpd.serve_forever()
 
 if __name__ == "__main__":
-    run()
+    server_thread = threading.Thread(target=start_server, daemon=True)
+    server_thread.start()
