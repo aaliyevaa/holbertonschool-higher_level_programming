@@ -11,11 +11,9 @@ from datetime import timedelta
 app = Flask(__name__)
 auth = HTTPBasicAuth()
 
-
 app.config['JWT_SECRET_KEY'] = 'key'
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(minutes=30)
 jwt = JWTManager(app)
-
 
 users = {
     "user1": {
@@ -30,13 +28,16 @@ users = {
     }
 }
 
-
 @auth.verify_password
 def verify_password(username, password):
     user = users.get(username)
     if user and check_password_hash(user['password'], password):
         return username
     return None
+
+@auth.error_handler
+def unauthorized():
+    return jsonify({"error": "Unauthorized"}), 401
 
 @app.route('/basic-protected', methods=['GET'])
 @auth.login_required
@@ -72,6 +73,7 @@ def admin_only():
         return jsonify({"error": "Admin access required"}), 403
     return jsonify(message="Admin Access: Granted"), 200
 
+# JWT Error Handlers
 @jwt.unauthorized_loader
 def handle_missing_token(err):
     return jsonify({"error": "Missing or invalid token"}), 401
@@ -91,7 +93,6 @@ def handle_revoked_token(jwt_header, jwt_payload):
 @jwt.needs_fresh_token_loader
 def handle_fresh_token_required(jwt_header, jwt_payload):
     return jsonify({"error": "Fresh token required"}), 401
-
 
 if __name__ == '__main__':
     app.run(debug=True)
