@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 from http.server import BaseHTTPRequestHandler, HTTPServer
-import socketserver
+import threading  
 import json
 
 
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
-    def DO_GET(self):
+    def do_GET(self):  
         if self.path == '/':
             self.send_response(200)
             self.send_header("Content-type", "text/plain")
@@ -35,16 +35,19 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         else:
             self.send_response(404)
             self.send_header('Content-type', 'text/plain')
-            self.end_hedaers()
+            self.end_headers()  
             self.wfile.write(b"Endpoint not found")
 
-def run():
+
+def start_server():  
     port = 8000
     server_address = ('', port)
     httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
     print(f"Server is running on port {port}...")
     httpd.serve_forever()
 
+
 if __name__ == "__main__":
     server_thread = threading.Thread(target=start_server, daemon=True)
     server_thread.start()
+
