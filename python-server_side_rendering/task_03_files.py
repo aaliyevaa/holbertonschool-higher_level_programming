@@ -4,49 +4,66 @@ from flask import Flask, render_template, request
 import json
 import csv
 
+from flask import Flask, render_template, request
+import json
+import csv
+
 app = Flask(__name__)
 
-def read_json():
+def load_json_data(filepath='products.json'):
     try:
-        with open('products.json') as f:
-            return json.load(f)
-    except:
+        with open(filepath, 'r') as file:
+            return json.load(file)
+    except Exception as e:
         return []
 
-def read_csv():
+def load_csv_data(filepath='products.csv'):
+    data = []
     try:
-        with open('products.csv') as f:
-            reader = csv.DictReader(f)
-            return list(reader)
-    except:
+        with open(filepath, 'r') as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                data.append({
+                    'id': int(row['id']),
+                    'name': row['name'],
+                    'category': row['category'],
+                    'price': float(row['price'])
+                })
+    except Exception as e:
         return []
+    return data
 
 @app.route('/products')
 def products():
     source = request.args.get('source')
     id_param = request.args.get('id')
+    data = []
     error = None
-    products = []
 
     if source == 'json':
-        products = read_json()
+        data = load_json_data()
     elif source == 'csv':
-        products = read_csv()
+        data = load_csv_data()
     else:
-        error = "Wrong source"
+        error = "Wrong source. Use 'json' or 'csv'."
+        return render_template("product_display.html", error=error)
 
-    # Filter by ID if provided
-    if not error and id_param:
+    # Convert id_param to int and filter data
+    if id_param:
         try:
-            products = [p for p in products if str(p.get("id")) == str(id_param)]
-            if not products:
-                error = "Product not found"
-        except:
-            error = "Error filtering products"
+            product_id = int(id_param)
+            filtered = [item for item in data if item['id'] == product_id]
+            if not filtered:
+                error = f"Product with id {product_id} not found."
+                return render_template("product_display.html", error=error)
+            return render_template("product_display.html", products=filtered)
+        except ValueError:
+            error = "Invalid id parameter."
+            return render_template("product_display.html", error=error)
 
-    return render_template("product_display.html", products=products, error=error)
+    return render_template("product_display.html", products=data)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True)
 
 
