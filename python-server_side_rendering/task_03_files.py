@@ -54,7 +54,7 @@ def products():
             product_id = int(id_param)
             filtered = [item for item in data if item['id'] == product_id]
             if not filtered:
-                error = f"Product with id {product_id} not found."
+                error = f"Product not found"
                 return render_template("product_display.html", error=error)
             return render_template("product_display.html", products=filtered)
         except ValueError:
